@@ -1,0 +1,226 @@
+@import url("./Login.css");
+
+.workspace-layout {
+  align-items: stretch;
+  justify-content: stretch;
+  gap: 18px;
+}
+
+.sidebar {
+  width: 250px;
+  padding: 16px 14px 14px;
+  border-radius: 22px;
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.46), transparent 60%),
+    rgba(15, 23, 42, 0.97);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sidebar-section + .sidebar-section {
+  border-top: 1px dashed rgba(55, 65, 81, 1);
+  padding-top: 12px;
+}
+
+.sidebar-title {
+  margin: 0 0 8px;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(156, 163, 175, 0.95);
+}
+
+.file-list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.file-item {
+  padding: 7px 9px;
+  border-radius: 12px;
+  border: 1px solid rgba(55, 65, 81, 0.9);
+  background: rgba(15, 23, 42, 0.96);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 160ms ease-out, border-color 160ms ease-out,
+    transform 80ms ease-out, box-shadow 160ms ease-out;
+}
+
+.file-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.95);
+}
+
+.file-item.active {
+  border-color: rgba(129, 140, 248, 0.9);
+  background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.7), transparent 60%),
+    rgba(15, 23, 42, 0.98);
+}
+
+.select {
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 11px;
+  border: 1px solid rgba(55, 65, 81, 0.9);
+  background: rgba(15, 23, 42, 0.98);
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.editor-pane {
+  flex: 1.4;
+  display: flex;
+  flex-direction: column;
+  border-radius: 22px;
+  border: 1px solid rgba(55, 65, 81, 0.9);
+  background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.4), transparent 60%),
+    rgba(15, 23, 42, 0.97);
+  box-shadow: var(--shadow-subtle);
+}
+
+.editor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px 9px;
+  border-bottom: 1px solid rgba(31, 41, 55, 1);
+}
+
+.tabs {
+  display: flex;
+  gap: 6px;
+}
+
+.tab {
+  padding: 6px 12px 5px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: rgba(209, 213, 219, 0.92);
+  font-size: 0.86rem;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: rgba(15, 23, 42, 0.95);
+  border-color: rgba(79, 70, 229, 0.6);
+}
+
+.editor-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.btn.small {
+  padding-block: 6px;
+  padding-inline: 12px;
+  font-size: 0.8rem;
+}
+
+.editor-area {
+  flex: 1;
+  padding: 10px 14px 14px;
+  overflow: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9rem;
+}
+
+.code {
+  margin: 0;
+  white-space: pre;
+}
+
+.code-comment {
+  color: #6b7280;
+}
+
+.code-keyword {
+  color: #a855f7;
+}
+
+.code-fn {
+  color: #22c55e;
+}
+
+.code-type {
+  color: #0ea5e9;
+}
+
+.code-string {
+  color: #facc15;
+}
+
+.output-pane {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 22px;
+  border: 1px solid rgba(55, 65, 81, 0.9);
+  background: radial-gradient(circle at top left, rgba(8, 47, 73, 0.7), transparent 60%),
+    rgba(15, 23, 42, 0.97);
+  box-shadow: var(--shadow-subtle);
+}
+
+.output-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px 8px;
+  border-bottom: 1px solid rgba(31, 41, 55, 1);
+}
+
+.output-header h2 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.terminal {
+  padding: 9px 12px 11px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: 0.86rem;
+}
+
+.terminal-line {
+  margin-bottom: 2px;
+}
+
+.terminal-line.muted {
+  color: var(--muted);
+}
+
+.btn.primary.small {
+  padding-inline: 14px;
+}
+
+@media (max-width: 1120px) {
+  .workspace-layout {
+    flex-wrap: wrap;
+  }
+
+  .output-pane {
+    width: 100%;
+    order: 3;
+  }
+}
+
+@media (max-width: 900px) {
+  .workspace-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .editor-pane {
+    order: 3;
+  }
+}
