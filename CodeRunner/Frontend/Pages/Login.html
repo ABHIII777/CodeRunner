@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeRunner | Login</title>
+    <link rel="stylesheet" href="../Styles/Login.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="brand">
+          <span class="brand-mark">CR</span>
+          <span class="brand-text">CodeRunner</span>
+        </div>
+        <nav class="app-nav">
+          <a href="Login.html" class="nav-link active">Login</a>
+          <a href="SignUp.html" class="nav-link">Sign Up</a>
+        </nav>
+      </header>
+
+      <main class="app-main">
+        <section class="auth-card">
+          <h1 class="auth-title">Welcome back</h1>
+          <p class="auth-subtitle">Sign in to continue to your workspace.</p>
+
+          <form class="auth-form" novalidate>
+            <label class="field">
+              <span class="field-label">Email</span>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="you@example.com"
+                required
+              />
+            </label>
+
+            <label class="field">
+              <span class="field-label">Password</span>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="••••••••"
+                required
+              />
+            </label>
+
+            <p id="loginError" style="display: none; margin: 0; color: #d92d20"></p>
+
+            <div class="field-row">
+              <label class="checkbox">
+                <input type="checkbox" />
+                <span>Remember me</span>
+              </label>
+              <a href="#" class="link-muted">Forgot password?</a>
+            </div>
+
+            <a href="Dashboard.html" class="btn primary" role="button" id="loginBtn"
+              >Login</a
+            >
+          </form>
+
+          <p class="auth-footer">
+            Don’t have an account?
+            <a href="SignUp.html" class="link-accent">Sign up</a>
+          </p>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        <p>&copy; <span id="year"></span> CodeRunner. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const emailInput = document.getElementById("email");
+      const passwordInput = document.getElementById("password");
+      const loginBtn = document.getElementById("loginBtn");
+      const loginError = document.getElementById("loginError");
+
+      function validateForm() {
+        const email = (emailInput.value ?? "").trim();
+        const password = (passwordInput.value ?? "").trim();
+        const errors = [];
+
+        // Email: at least 3 chars and must contain "@" and "."
+        if (email.length === 0) {
+          errors.push("Please enter your email.");
+        } else {
+          if (email.length < 3) {
+            errors.push("Email must be at least 3 characters long.");
+          }
+          if (!email.includes("@") || !email.includes(".")) {
+            errors.push('Email must contain "@" and ".".');
+          }
+        }
+
+        // Password: at least 8 chars, 1 uppercase, 1 lowercase, 1 number, 1 special
+        const hasUpper = /[A-Z]/.test(password);
+        const hasLower = /[a-z]/.test(password);
+        const hasDigit = /\d/.test(password);
+        const hasSpecial = /[^A-Za-z0-9]/.test(password);
+
+        if (password.length === 0) {
+          errors.push("Please enter your password.");
+        } else {
+          if (password.length < 8) {
+            errors.push("Password must be at least 8 characters long.");
+          }
+          if (!hasUpper) {
+            errors.push("Password must contain at least one uppercase letter.");
+          }
+          if (!hasLower) {
+            errors.push("Password must contain at least one lowercase letter.");
+          }
+          if (!hasDigit) {
+            errors.push("Password must contain at least one number.");
+          }
+          if (!hasSpecial) {
+            errors.push("Password must contain at least one special symbol.");
+          }
+        }
+
+        if (errors.length > 0) {
+          loginError.textContent = errors.join(" ");
+          loginError.style.display = "block";
+          return false;
+        }
+
+        loginError.textContent = "";
+        loginError.style.display = "none";
+        return true;
+      }
+
+      loginBtn.addEventListener("click", (e) => {
+        if (!validateForm()) {
+          e.preventDefault();
+        }
+      });
+
+      emailInput.addEventListener("input", validateForm);
+      passwordInput.addEventListener("input", validateForm);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeRunner | Sign Up</title>
+    <link rel="stylesheet" href="../Styles/SignUp.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="brand">
+          <span class="brand-mark">CR</span>
+          <span class="brand-text">CodeRunner</span>
+        </div>
+        <nav class="app-nav">
+          <a href="Login.html" class="nav-link">Login</a>
+          <a href="SignUp.html" class="nav-link active">Sign Up</a>
+        </nav>
+      </header>
+
+      <main class="app-main">
+        <section class="auth-card">
+          <h1 class="auth-title">Create your account</h1>
+          <p class="auth-subtitle">Start building and running your code in minutes.</p>
+
+          <form class="auth-form">
+            <div class="field-row">
+              <label class="field">
+                <span class="field-label">First name</span>
+                <input
+                  type="text"
+                  name="firstName"
+                  placeholder="Alex"
+                  required
+                />
+              </label>
+              <label class="field">
+                <span class="field-label">Last name</span>
+                <input
+                  type="text"
+                  name="lastName"
+                  placeholder="Johnson"
+                  required
+                />
+              </label>
+            </div>
+
+            <label class="field">
+              <span class="field-label">Email</span>
+              <input
+                type="email"
+                name="email"
+                placeholder="you@example.com"
+                required
+              />
+            </label>
+
+            <label class="field">
+              <span class="field-label">Password</span>
+              <input
+                type="password"
+                name="password"
+                placeholder="Create a strong password"
+                required
+              />
+            </label>
+
+            <label class="field">
+              <span class="field-label">Confirm password</span>
+              <input
+                type="password"
+                name="confirmPassword"
+                placeholder="Re-enter password"
+                required
+              />
+            </label>
+
+            <label class="checkbox">
+              <input type="checkbox" required />
+              <span>
+                I agree to the
+                <a href="#" class="link-accent">Terms of Service</a>
+                and
+                <a href="#" class="link-accent">Privacy Policy</a>.
+              </span>
+            </label>
+
+            <button type="submit" class="btn primary">Create account</button>
+          </form>
+
+          <p class="auth-footer">
+            Already have an account?
+            <a href="Login.html" class="link-accent">Login</a>
+          </p>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        <p>&copy; <span id="year"></span> CodeRunner. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+  </html>
+

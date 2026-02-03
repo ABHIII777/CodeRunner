@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeRunner | Dashboard</title>
+    <link rel="stylesheet" href="../Styles/Dashboard.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="brand">
+          <span class="brand-mark">CR</span>
+          <span class="brand-text">CodeRunner</span>
+        </div>
+        <nav class="app-nav">
+          <a href="Dashboard.html" class="nav-link active">Dashboard</a>
+          <a href="WorkSpace.html" class="nav-link">Workspace</a>
+          <a href="Login.html" class="nav-link">Logout</a>
+        </nav>
+      </header>
+
+      <main class="app-main dashboard-layout">
+        <aside class="sidebar">
+          <h2 class="sidebar-title">Projects</h2>
+          <button class="btn secondary full-width">+ New Project</button>
+          <ul class="project-list">
+            <li class="project-item active">
+              <div class="project-name">Demo Project</div>
+              <div class="project-meta">Last run: 5 min ago</div>
+            </li>
+            <li class="project-item">
+              <div class="project-name">API Playground</div>
+              <div class="project-meta">Last run: Yesterday</div>
+            </li>
+            <li class="project-item">
+              <div class="project-name">Algorithms Practice</div>
+              <div class="project-meta">Last run: 3 days ago</div>
+            </li>
+          </ul>
+        </aside>
+
+        <section class="content">
+          <div class="content-header">
+            <div>
+              <h1>Good afternoon, Developer</h1>
+              <p class="muted">
+                Jump back into your recent projects or start something new.
+              </p>
+            </div>
+            <a href="WorkSpace.html" class="btn primary">Open Workspace</a>
+          </div>
+
+          <section class="cards-grid">
+            <article class="card">
+              <h2>Recent Runs</h2>
+              <ul class="list">
+                <li>main.py &mdash; Python &mdash; Passed</li>
+                <li>index.js &mdash; Node &mdash; Failed (timeout)</li>
+                <li>solution.cpp &mdash; C++ &mdash; Passed</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <h2>Quick Actions</h2>
+              <div class="quick-actions">
+                <button class="btn ghost">New file</button>
+                <button class="btn ghost">Import project</button>
+                <button class="btn ghost">View logs</button>
+              </div>
+            </article>
+
+            <article class="card span-2">
+              <h2>Activity</h2>
+              <p class="muted">
+                This is a placeholder activity feed. You can later replace it
+                with real data from your backend.
+              </p>
+            </article>
+          </section>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        <p>&copy; <span id="year"></span> CodeRunner. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+  </html>
+

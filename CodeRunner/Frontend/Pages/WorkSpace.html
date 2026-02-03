@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeRunner | Workspace</title>
+    <link rel="stylesheet" href="../Styles/WorkSpace.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="brand">
+          <span class="brand-mark">CR</span>
+          <span class="brand-text">CodeRunner</span>
+        </div>
+        <nav class="app-nav">
+          <a href="Dashboard.html" class="nav-link">Dashboard</a>
+          <a href="WorkSpace.html" class="nav-link active">Workspace</a>
+          <a href="Login.html" class="nav-link">Logout</a>
+        </nav>
+      </header>
+
+      <main class="app-main workspace-layout">
+        <aside class="sidebar">
+          <div class="sidebar-section">
+            <h2 class="sidebar-title">Files</h2>
+            <button class="btn secondary full-width">+ New File</button>
+            <ul class="file-list">
+              <li class="file-item active">main.py</li>
+              <li class="file-item">index.js</li>
+              <li class="file-item">solution.cpp</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-section">
+            <h2 class="sidebar-title">Environment</h2>
+            <select class="select">
+              <option>Python 3.11</option>
+              <option>Node 20</option>
+              <option>C++17</option>
+            </select>
+          </div>
+        </aside>
+
+        <section class="editor-pane">
+          <div class="editor-header">
+            <div class="tabs">
+              <button class="tab active">main.py</button>
+              <button class="tab">index.js</button>
+            </div>
+            <div class="editor-actions">
+              <button class="btn ghost small">Format</button>
+              <button class="btn ghost small">Download</button>
+            </div>
+          </div>
+
+          <div class="editor-area" aria-label="Code editor (static mockup)">
+            <pre class="code">
+<span class="code-comment"># Example Python code</span>
+<span class="code-keyword">def</span> <span class="code-fn">greet</span>(name: <span class="code-type">str</span>) -&gt; <span class="code-type">None</span>:
+    <span class="code-keyword">print</span>(f<span class="code-string">"Hello, {name}!"</span>)
+
+<span class="code-keyword">if</span> __name__ == <span class="code-string">"__main__"</span>:
+    greet(<span class="code-string">"CodeRunner"</span>)
+            </pre>
+          </div>
+        </section>
+
+        <section class="output-pane">
+          <div class="output-header">
+            <h2>Output</h2>
+            <button class="btn primary small">Run</button>
+          </div>
+          <div class="terminal">
+            <div class="terminal-line muted">▶ python main.py</div>
+            <div class="terminal-line">Hello, CodeRunner!</div>
+            <div class="terminal-line muted">Process finished with exit code 0</div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        <p>&copy; <span id="year"></span> CodeRunner. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+  </html>
+
