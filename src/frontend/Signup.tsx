@@ -1,8 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
-import "./styles/Signup.css"
+import "./styles/Signup.css";
 
 export default function Signup() {
-
   const navigate = useNavigate();
 
   return (
@@ -13,15 +12,21 @@ export default function Signup() {
           <span className="brand-text">CodeRunner</span>
         </div>
         <nav className="app-nav">
-          <Link to="/" className="nav-link">Login</Link>
-          <Link to="/signup" className="nav-link active">Sign Up</Link>
+          <Link to="/login" className="nav-link">
+            Login
+          </Link>
+          <Link to="/signup" className="nav-link active">
+            Sign Up
+          </Link>
         </nav>
       </header>
 
       <main className="app-main">
         <section className="auth-card">
           <h1 className="auth-title">Create your account</h1>
-          <p className="auth-subtitle">Start building and running your code in minutes.</p>
+          <p className="auth-subtitle">
+            Start building and running your code in minutes.
+          </p>
 
           <form className="auth-form">
             <div className="field-row">
@@ -79,24 +84,39 @@ export default function Signup() {
               <input type="checkbox" required />
               <span>
                 I agree to the
-                <a href="#" className="link-accent">Terms of Service</a>
+                <a href="#" className="link-accent">
+                  Terms of Service
+                </a>
                 and
-                <a href="#" className="link-accent">Privacy Policy</a>.
+                <a href="#" className="link-accent">
+                  Privacy Policy
+                </a>
+                .
               </span>
             </label>
 
-            <button type="submit" className="btn primary" onClick={() => navigate("/")}>Create account</button>
+            <button
+              type="submit"
+              className="btn primary"
+              onClick={() => navigate("/")}
+            >
+              Create account
+            </button>
           </form>
 
           <p className="auth-footer">
             Already have an account?&nbsp;
-            <Link to="/" className="auth-footer">Login</Link>
+            <Link to="/" className="auth-footer">
+              Login
+            </Link>
           </p>
         </section>
       </main>
 
       <footer className="app-footer">
-        <p>&copy; <span id="year"></span> CodeRunner. All rights reserved.</p>
+        <p>
+          &copy; <span id="year"></span> CodeRunner. All rights reserved.
+        </p>
       </footer>
     </div>
   );

@@ -22,7 +22,7 @@ export default function Login() {
     if (IsAuth) {
       navigate("/dashboard");
     }
-  }, [IsAuth])
+  }, [IsAuth]);
 
   return (
     <div className="app-shell">
@@ -33,7 +33,7 @@ export default function Login() {
         </div>
 
         <nav className="app-nav">
-          <Link to="/" className="nav-link active">
+          <Link to="/login" className="nav-link active">
             Login
           </Link>
           <Link to="/signup" className="nav-link">
