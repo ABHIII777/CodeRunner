@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dashboard>
+  <user name="Abhi Patel">
+    <activities>
+      <activity type="run" status="passed">
+        <file>main.py</file>
+        <language>Python</language>
+        <time>2026-02-16T10:30:00</time>
+      </activity>
+
+      <activity type="run" status="failed">
+        <file>index.js</file>
+        <language>Node</language>
+        <time>2026-02-15T18:10:00</time>
+      </activity>
+    </activities>
+
+    <projects>
+      <project name="CodeRunner">
+        <progress>70</progress>
+        <lastUpdated>2026-02-16</lastUpdated>
+      </project>
+
+      <project name="Algorithms Practice">
+        <progress>40</progress>
+        <lastUpdated>2026-02-14</lastUpdated>
+      </project>
+    </projects>
+
+    <languages>
+      <language name="Python" usage="45" />
+      <language name="JavaScript" usage="30" />
+      <language name="C++" usage="25" />
+    </languages>
+  </user>
+</dashboard>

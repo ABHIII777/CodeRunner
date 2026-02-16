@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./styles/Dashboard.css";
 
 export default function Dashboard() {
@@ -9,6 +9,30 @@ export default function Dashboard() {
     const newProjects = { id: new Date().getTime(), text: "New Project" };
     setDivs((prevDivs) => [...prevDivs, newProjects]);
   };
+
+  const [activities, setActivities] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetch("/activity.xml")
+    .then((res) => res.text())
+    .then((data) => {
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(data, "text/xml");
+
+        const activities = xml.getElementsByTagName("activity");
+        const parsedActivities = [];
+
+        for(let i = 0; i < activities.length; i++) {
+            const file = activities[i].getElementsByTagName("file")[0]?.textContent;
+            const language = activities[i].getElementsByTagName("language")[0]?.textContent;
+            const status = activities[i].getElementsByTagName("status");
+
+            parsedActivities.push({file, language, status});
+        }
+
+        setActivities(parsedActivities);
+    });
+  }, []);
 
   return (
     <div className="app-shell">
@@ -92,10 +116,13 @@ export default function Dashboard() {
 
             <article className="card span-2">
               <h2>Activity</h2>
-              <p className="muted">
-                This is a placeholder activity feed. You can later replace it
-                with real data from your backend.
-              </p>
+              <ul className="list">
+                {
+                    activities.map((act, index) => (
+                        <li key={index}> {act.file} - {act.language} - {act.status}</li>
+                    ))
+                }
+              </ul>
             </article>
           </section>
         </section>
