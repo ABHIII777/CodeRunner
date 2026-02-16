@@ -12,7 +12,7 @@ export default function Signup() {
           <span className="brand-text">CodeRunner</span>
         </div>
         <nav className="app-nav">
-          <Link to="/login" className="nav-link">
+          <Link to="/" className="nav-link">
             Login
           </Link>
           <Link to="/signup" className="nav-link active">

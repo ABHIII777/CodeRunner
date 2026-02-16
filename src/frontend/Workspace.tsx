@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./styles/Workspace.css"
+import "./styles/Workspace.css";
 
 export default function Workspace() {
   return (
@@ -10,9 +10,15 @@ export default function Workspace() {
           <span className="brand-text">CodeRunner</span>
         </div>
         <nav className="app-nav">
-          <Link to="/dashboard" className="nav-link">Dashboard</Link>
-          <Link to="/workspace" className="nav-link active">workspace</Link>
-          <Link to="/" className="nav-link">Logout</Link>
+          <Link to="/dashboard" className="nav-link">
+            Dashboard
+          </Link>
+          <Link to="/workspace" className="nav-link active">
+            workspace
+          </Link>
+          <Link to="/" className="nav-link">
+            Logout
+          </Link>
         </nav>
       </header>
 
@@ -53,11 +59,15 @@ export default function Workspace() {
           <div className="editor-area" aria-label="Code editor (static mockup)">
             <pre className="code">
               <span className="code-comment"># Example Python code</span>
-              <span className="code-keyword">def</span> <span className="code-fn">greet</span>(name: <span className="code-type">str</span>) -&gt; <span className="code-type">None</span>:
-              <span className="code-keyword">print</span>(f<span className="code-string">"Hello, There!"</span>)
-
-              <span className="code-keyword">if</span> __name__ == <span className="code-string">"__main__"</span>:
-                greet(<span className="code-string">"CodeRunner"</span>)
+              <span className="code-keyword">def</span>{" "}
+              <span className="code-fn">greet</span>(name:{" "}
+              <span className="code-type">str</span>) -&gt;{" "}
+              <span className="code-type">None</span>:
+              <span className="code-keyword">print</span>(f
+              <span className="code-string">"Hello, There!"</span>)
+              <span className="code-keyword">if</span> __name__ =={" "}
+              <span className="code-string">"__main__"</span>: greet(
+              <span className="code-string">"CodeRunner"</span>)
             </pre>
           </div>
         </section>
@@ -70,13 +80,17 @@ export default function Workspace() {
           <div className="terminal">
             <div className="terminal-line muted">▶ python main.py</div>
             <div className="terminal-line">Hello, CodeRunner!</div>
-            <div className="terminal-line muted">Process finished with exit code 0</div>
+            <div className="terminal-line muted">
+              Process finished with exit code 0
+            </div>
           </div>
         </section>
       </main>
 
       <footer className="app-footer">
-        <p>&copy; <span id="year"></span> CodeRunner. All rights reserved.</p>
+        <p>
+          &copy; <span id="year"></span> CodeRunner. All rights reserved.
+        </p>
       </footer>
     </div>
   );

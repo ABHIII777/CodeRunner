@@ -10,7 +10,12 @@
   width: 260px;
   padding: 18px 16px 16px;
   border-radius: 22px;
-  background: radial-gradient(circle at top left, rgba(30, 64, 175, 0.48), transparent 60%),
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(30, 64, 175, 0.48),
+      transparent 60%
+    ),
     rgba(15, 23, 42, 0.96);
   border: 1px solid rgba(148, 163, 184, 0.4);
   box-shadow: var(--shadow-subtle);
@@ -54,11 +59,19 @@
   padding: 10px 10px 9px;
   border-radius: 14px;
   border: 1px solid rgba(55, 65, 81, 0.9);
-  background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.3), transparent 60%),
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(148, 163, 184, 0.3),
+      transparent 60%
+    ),
     rgba(15, 23, 42, 0.96);
   cursor: pointer;
-  transition: background 160ms ease-out, border-color 160ms ease-out,
-    transform 80ms ease-out, box-shadow 160ms ease-out;
+  transition:
+    background 160ms ease-out,
+    border-color 160ms ease-out,
+    transform 80ms ease-out,
+    box-shadow 160ms ease-out;
 }
 
 .project-item:hover {
@@ -68,7 +81,12 @@
 
 .project-item.active {
   border-color: rgba(129, 140, 248, 0.9);
-  background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.8), transparent 65%),
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(79, 70, 229, 0.8),
+      transparent 65%
+    ),
     rgba(15, 23, 42, 0.98);
 }
 
@@ -115,7 +133,12 @@
   padding: 16px 16px 14px;
   border-radius: 20px;
   border: 1px solid rgba(55, 65, 81, 0.9);
-  background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.4), transparent 55%),
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(79, 70, 229, 0.4),
+      transparent 55%
+    ),
     rgba(15, 23, 42, 0.97);
   box-shadow: var(--shadow-subtle);
 }

@@ -10,7 +10,12 @@
   width: 250px;
   padding: 16px 14px 14px;
   border-radius: 22px;
-  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.46), transparent 60%),
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(59, 130, 246, 0.46),
+      transparent 60%
+    ),
     rgba(15, 23, 42, 0.97);
   border: 1px solid rgba(148, 163, 184, 0.4);
   box-shadow: var(--shadow-subtle);
@@ -48,8 +53,11 @@
   background: rgba(15, 23, 42, 0.96);
   font-size: 0.9rem;
   cursor: pointer;
-  transition: background 160ms ease-out, border-color 160ms ease-out,
-    transform 80ms ease-out, box-shadow 160ms ease-out;
+  transition:
+    background 160ms ease-out,
+    border-color 160ms ease-out,
+    transform 80ms ease-out,
+    box-shadow 160ms ease-out;
 }
 
 .file-item:hover {
@@ -59,7 +67,12 @@
 
 .file-item.active {
   border-color: rgba(129, 140, 248, 0.9);
-  background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.7), transparent 60%),
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(79, 70, 229, 0.7),
+      transparent 60%
+    ),
     rgba(15, 23, 42, 0.98);
 }
 
@@ -79,7 +92,12 @@
   flex-direction: column;
   border-radius: 22px;
   border: 1px solid rgba(55, 65, 81, 0.9);
-  background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.4), transparent 60%),
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(79, 70, 229, 0.4),
+      transparent 60%
+    ),
     rgba(15, 23, 42, 0.97);
   box-shadow: var(--shadow-subtle);
 }
@@ -127,8 +145,9 @@
   flex: 1;
   padding: 10px 14px 14px;
   overflow: auto;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
   font-size: 0.9rem;
 }
 
@@ -163,7 +182,8 @@
   flex-direction: column;
   border-radius: 22px;
   border: 1px solid rgba(55, 65, 81, 0.9);
-  background: radial-gradient(circle at top left, rgba(8, 47, 73, 0.7), transparent 60%),
+  background:
+    radial-gradient(circle at top left, rgba(8, 47, 73, 0.7), transparent 60%),
     rgba(15, 23, 42, 0.97);
   box-shadow: var(--shadow-subtle);
 }
@@ -183,8 +203,9 @@
 
 .terminal {
   padding: 9px 12px 11px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
   font-size: 0.86rem;
 }
 
