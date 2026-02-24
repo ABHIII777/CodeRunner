@@ -219,6 +219,8 @@
 
 .btn.primary.small {
   padding-inline: 14px;
+  margin-left: 5px;
+  width: 200px;
 }
 
 @media (max-width: 1120px) {
