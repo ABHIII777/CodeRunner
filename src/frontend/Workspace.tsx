@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Editor } from "@monaco-editor/react";
 import "./styles/Workspace.css";
 
 export default function Workspace() {
@@ -57,18 +58,20 @@ export default function Workspace() {
           </div>
 
           <div className="editor-area" aria-label="Code editor (static mockup)">
-            <pre className="code">
-              <span className="code-comment"># Example Python code</span>
-              <span className="code-keyword">def</span>{" "}
-              <span className="code-fn">greet</span>(name:{" "}
-              <span className="code-type">str</span>) -&gt;{" "}
-              <span className="code-type">None</span>:
-              <span className="code-keyword">print</span>(f
-              <span className="code-string">"Hello, There!"</span>)
-              <span className="code-keyword">if</span> __name__ =={" "}
-              <span className="code-string">"__main__"</span>: greet(
-              <span className="code-string">"CodeRunner"</span>)
-            </pre>
+            <Editor 
+              defaultLanguage="javascript"
+              defaultValue={`function hello() {
+                console.log("Hello Abhi 🔥");
+                }`}
+              theme="vs-dark"
+              options={{
+                fontSize: 14,
+                fontFamily: "Cascadia Code, monospace",
+                minimap: { enabled: true },
+                wordWrap: "on",
+                cursorSmoothCaretAnimation: "on",
+              }}
+            />
           </div>
         </section>
 
