@@ -30,9 +30,6 @@ export default function LandingPage() {
                         <button onClick={() => navigate("/signup")} className="btn primary big">
                             Start Building Now
                         </button>
-                        <button onClick={() => navigate("/login")} className="btn secondary big">
-                            Live Demo
-                        </button>
                     </div>
                 </div>
 
@@ -56,7 +53,7 @@ export default function LandingPage() {
             </main>
 
             <footer className="landing-footer">
-                <p>&copy; 2024 CodeRunner. All rights reserved.</p>
+                <p>&copy; 2026 CodeRunner. All rights reserved.</p>
             </footer>
         </div>
     );

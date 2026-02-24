@@ -28,12 +28,12 @@ export default function Login() {
     <div className="app-shell">
       <header className="app-header">
         <div className="brand">
-          <span className="brand-mark">CR</span>
-          <span className="brand-text">CodeRunner</span>
+          <span className="brand-mark"><Link to="/" className="nav-link">CR</Link></span>
+          <span className="brand-text"><Link to="/" className="nav-link">CodeRunner</Link></span>
         </div>
 
         <nav className="app-nav">
-          <Link to="/" className="nav-link active">
+          <Link to="/login" className="nav-link active">
             Login
           </Link>
           <Link to="/signup" className="nav-link">
