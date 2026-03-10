@@ -7,12 +7,28 @@ export default function Dashboard() {
   const [activities, setActivities] = useState<any[]>([]);
 
   const newProject = () => {
-    const newProjects = { id: new Date().getTime(), text: "New Project" };
+    const newProjects = { id: new Date().getTime(), text: "", isEditing: true };
     setDivs((prevDivs) => [...prevDivs, newProjects]);
   };
 
   const handleDelete = (id) => {
     setDivs((prevDivs) => prevDivs.filter((project) => project.id !== id));
+  }
+
+  const handleChange = (id, value) => {
+    setDivs((prev) => 
+      prev.map((project) => 
+        project.id === id ? {...project, text: value} : project
+      )
+    )
+  }
+
+  const finishEnteringProjectName = (id) => {
+    setDivs((prev) => 
+      prev.map((project) => 
+        project.id === id ? {...project, isEditing: false} : project
+      )
+    )
   }
 
   useEffect(() => {
@@ -66,8 +82,26 @@ export default function Dashboard() {
           <ul className="project-list">
             {divs.map((divData) => (
               <li key={divData.id} className="project-item">
-                <div className="project-name">{divData.text}
-                  <button className="project-delete" onClick={() => handleDelete(divData.id)}>Delete</button>
+                <div className="project-name">
+                  {
+                    divData.isEditing ? (
+                      <input 
+                        className="project-name-input"
+                        placeholder="Enter Project Name..."
+                        value={divData.text}
+                        onChange={(e) => handleChange(divData.id, e.target.value)}
+                        onBlur={() => finishEnteringProjectName(divData.id)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            finishEnteringProjectName(divData.id)
+                          }
+                        }}
+                      />
+                    ) : (
+                      <p>{divData.text}</p>
+                    )
+                  }
+                  <button className="project-delete" onClick={() => handleDelete(divData.id)}>X</button>
                 </div>
                 <div className="project-meta">{divData.id}</div>
               </li>

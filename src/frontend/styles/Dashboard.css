@@ -75,7 +75,6 @@
 }
 
 .project-item:hover {
-  transform: translateY(-1px);
   box-shadow: 0 18px 38px rgba(15, 23, 42, 0.95);
 }
 
@@ -92,6 +91,8 @@
 
 .project-name {
   font-size: 0.95rem;
+  display: flex;
+  margin-bottom: 10px;
 }
 
 .project-meta {
@@ -100,19 +101,26 @@
 }
 
 .project-delete {
-  margin-left: 50px;
+  position: fixed;
+  left: 20%;
+  height: 30px;
+  width: 30px;
   background-color: transparent;
   color: white;
   border-radius: 14px;
-  padding: 10px;
-  height: calc(100% - 20%);
   border: grey solid 0.5px;
   cursor: pointer;
+  font-size: 10px;
 }
 
-.project-delete:hover {
-  border-color: white;
-  transition: 0.5s;
+.project-name-input {
+  background-color: transparent;
+  color: white;
+  outline: none;
+  border: 1px solid grey;
+  border-radius: 14px;
+  height: 30px;
+  padding: 10px;
 }
 
 .content {
