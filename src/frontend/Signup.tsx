@@ -1,8 +1,50 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import "./styles/Signup.css";
 
 export default function Signup() {
   const navigate = useNavigate();
+
+  const [isAuth, setIsAuth] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: ""
+  });
+
+  let handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  let handleSignUp = async (e) => {
+    e.preventDefault();
+
+    const firstName = formData.firstName;
+    const lastName = formData.lastName;
+    const email = formData.email;
+    const password = formData.password;
+
+    const res = await fetch("http://localhost:5173/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ firstName, lastName, email, password })
+    })
+
+    const data = await res.json();
+    console.log(data);
+
+    setIsAuth(true);
+  }
+
+  useEffect(() => {
+    if (isAuth) {
+      navigate("/dashboard")
+    }
+  }, [isAuth])
 
   return (
     <div className="app-shell">
@@ -36,6 +78,7 @@ export default function Signup() {
                   type="text"
                   name="firstName"
                   placeholder="Alex"
+                  onChange={handleChange}
                   required
                 />
               </label>
@@ -45,6 +88,7 @@ export default function Signup() {
                   type="text"
                   name="lastName"
                   placeholder="Johnson"
+                  onChange={handleChange}
                   required
                 />
               </label>
@@ -56,6 +100,7 @@ export default function Signup() {
                 type="email"
                 name="email"
                 placeholder="you@example.com"
+                onChange={handleChange}
                 required
               />
             </label>
@@ -66,6 +111,7 @@ export default function Signup() {
                 type="password"
                 name="password"
                 placeholder="Create a strong password"
+                onChange={handleChange}
                 required
               />
             </label>
@@ -76,6 +122,7 @@ export default function Signup() {
                 type="password"
                 name="confirmPassword"
                 placeholder="Re-enter password"
+                onChange={handleChange}
                 required
               />
             </label>
@@ -98,7 +145,7 @@ export default function Signup() {
             <button
               type="submit"
               className="btn primary"
-              onClick={() => navigate("/")}
+              onClick={handleSignUp}
             >
               Create account
             </button>

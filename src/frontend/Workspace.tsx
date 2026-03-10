@@ -59,10 +59,8 @@ export default function Workspace() {
 
           <div className="editor-area" aria-label="Code editor (static mockup)">
             <Editor 
-              defaultLanguage="javascript"
-              defaultValue={`function hello() {
-                console.log("Hello Abhi 🔥");
-                }`}
+              defaultLanguage="python"
+              defaultValue={`print("Hello World!")`}
               theme="vs-dark"
               options={{
                 fontSize: 14,
