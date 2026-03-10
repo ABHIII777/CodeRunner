@@ -4,34 +4,37 @@ import "./styles/Dashboard.css";
 
 export default function Dashboard() {
   const [divs, setDivs] = useState<{ id: number; text: string }[]>([]);
+  const [activities, setActivities] = useState<any[]>([]);
 
   const newProject = () => {
     const newProjects = { id: new Date().getTime(), text: "New Project" };
     setDivs((prevDivs) => [...prevDivs, newProjects]);
   };
 
-  const [activities, setActivities] = useState<any[]>([]);
+  const handleDelete = (id) => {
+    setDivs((prevDivs) => prevDivs.filter((project) => project.id !== id));
+  }
 
   useEffect(() => {
     fetch("/activity.xml")
-    .then((res) => res.text())
-    .then((data) => {
+      .then((res) => res.text())
+      .then((data) => {
         const parser = new DOMParser();
         const xml = parser.parseFromString(data, "text/xml");
 
         const activities = xml.getElementsByTagName("activity");
         const parsedActivities = [];
 
-        for(let i = 0; i < activities.length; i++) {
-            const file = activities[i].getElementsByTagName("file")[0]?.textContent;
-            const language = activities[i].getElementsByTagName("language")[0]?.textContent;
-            const status = activities[i].getElementsByTagName("status");
+        for (let i = 0; i < activities.length; i++) {
+          const file = activities[i].getElementsByTagName("file")[0]?.textContent;
+          const language = activities[i].getElementsByTagName("language")[0]?.textContent;
+          const status = activities[i].getElementsByTagName("status");
 
-            parsedActivities.push({file, language, status});
+          parsedActivities.push({ file, language, status });
         }
 
         setActivities(parsedActivities);
-    });
+      });
   }, []);
 
   return (
@@ -61,21 +64,11 @@ export default function Dashboard() {
             + New Project
           </button>
           <ul className="project-list">
-            <li className="project-item active">
-              <div className="project-name">Demo Project</div>
-              <div className="project-meta">Last run: 5 min ago</div>
-            </li>
-            <li className="project-item">
-              <div className="project-name">API Playground</div>
-              <div className="project-meta">Last run: Yesterday</div>
-            </li>
-            <li className="project-item">
-              <div className="project-name">Algorithms Practice</div>
-              <div className="project-meta">Last run: 3 days ago</div>
-            </li>
             {divs.map((divData) => (
               <li key={divData.id} className="project-item">
-                <div className="project-name">{divData.text}</div>
+                <div className="project-name">{divData.text}
+                  <button className="project-delete" onClick={() => handleDelete(divData.id)}>Delete</button>
+                </div>
                 <div className="project-meta">{divData.id}</div>
               </li>
             ))}
@@ -118,9 +111,9 @@ export default function Dashboard() {
               <h2>Activity</h2>
               <ul className="list">
                 {
-                    activities.map((act, index) => (
-                        <li key={index}> {act.file} - {act.language} - {act.status}</li>
-                    ))
+                  activities.map((act, index) => (
+                    <li key={index}> {act.file} - {act.language} - {act.status}</li>
+                  ))
                 }
               </ul>
             </article>

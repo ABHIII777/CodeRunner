@@ -99,6 +99,22 @@
   color: var(--muted);
 }
 
+.project-delete {
+  margin-left: 50px;
+  background-color: transparent;
+  color: white;
+  border-radius: 14px;
+  padding: 10px;
+  height: calc(100% - 20%);
+  border: grey solid 0.5px;
+  cursor: pointer;
+}
+
+.project-delete:hover {
+  border-color: white;
+  transition: 0.5s;
+}
+
 .content {
   flex: 1;
   display: flex;
