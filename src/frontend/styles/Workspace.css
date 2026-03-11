@@ -59,7 +59,6 @@
 }
 
 .file-item:hover {
-  transform: translateY(-1px);
   box-shadow: 0 12px 32px rgba(15, 23, 42, 0.95);
 }
 
@@ -70,6 +69,30 @@
       rgba(79, 70, 229, 0.7),
       transparent 60%),
     rgba(15, 23, 42, 0.98);
+}
+
+.file-name {
+  display: flex;
+}
+
+.file-name-input {
+  border: 1px solid grey;
+  outline: none;
+  border-radius: 14px;
+  background: transparent;
+  padding: 10px;
+}
+
+.file-delete {
+  position: fixed;
+  left: 13.1%;
+  background: transparent;
+  color: white;
+  border: 1px solid grey;
+  border-radius: 14px;
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
 }
 
 .select {
