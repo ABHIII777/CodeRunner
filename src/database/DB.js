@@ -1,10 +1,10 @@
-import { Pool } from "pg"
+import { Pool } from "pg";
 
 const pool = new Pool({
   user: "abhipatel",
   host: "localhost",
   port: 5432,
-  database: "coderunnerDB"
-})
+  database: "coderunnerdb"
+});
 
-module.exports = pool;
+export default pool;
