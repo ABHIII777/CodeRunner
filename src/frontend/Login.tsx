@@ -20,21 +20,30 @@ export default function Login() {
 
     let handleLogin = async (e) => {
         e.preventDefault();
-        console.log(formData);
+        
+        try {
+            const res = await fetch("http://localhost:3000/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ 
+                    email: formData.email, 
+                    password: formData.password 
+                })
+            });
 
-        const email = formData.email;
-        const password = formData.password;
-
-        const res = await fetch("http://localhost:3000/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password })
-        })
-
-        const data = await res.json();
-        console.log("Response from server: ", data);
-
-        setIsAuth(true);
+            const data = await res.json();
+            
+            if (res.ok) {
+                localStorage.setItem("token", data.token);
+                localStorage.setItem("user", JSON.stringify(data.user));
+                setIsAuth(true);
+            } else {
+                alert(data.message || "Login failed");
+            }
+        } catch (err) {
+            console.error("Login error:", err);
+            alert("Connection error to server");
+        }
     }
 
     useEffect(() => {
@@ -44,7 +53,7 @@ export default function Login() {
     }, [IsAuth]);
 
     return (
-        <div className="app-shell">
+        <div className="auth-page">
             <header className="app-header">
                 <div className="brand">
                     <span className="brand-mark"><Link to="/" className="nav-link">CR</Link></span>
@@ -61,59 +70,58 @@ export default function Login() {
                 </nav>
             </header>
 
-            <main className="app-main">
-                <div className="wrapper">
-                    <section className="auth-card">
+            <main className="auth-main">
+                <section className="auth-card">
+                    <div className="auth-header">
                         <h1 className="auth-title">Welcome back</h1>
                         <p className="auth-subtitle">
                             Login to continue to your workspace.
                         </p>
-                        <form className="auth-form" name="authForm" action={handleLogin}>
-                            <label className="field">
-                                <span className="field-label">Email</span>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    placeholder="you@example.com"
-                                    onChange={handleChange}
-                                    required
-                                />
+                    </div>
+                    <form className="auth-form" onSubmit={handleLogin}>
+                        <label className="field">
+                            <span className="field-label">Email</span>
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="you@example.com"
+                                onChange={handleChange}
+                                required
+                            />
+                        </label>
+                        <label className="field">
+                            <span className="field-label">Password</span>
+                            <input
+                                type="password"
+                                name="password"
+                                placeholder="••••••••"
+                                onChange={handleChange}
+                                required
+                            />
+                        </label>
+                        <div className="field-row">
+                            <label className="checkbox-label">
+                                <input type="checkbox" />
+                                <span>Remember me</span>
                             </label>
-                            <label className="field">
-                                <span className="field-label">Password</span>
-                                <input
-                                    type="password"
-                                    name="password"
-                                    placeholder="••••••••"
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </label>
-                            <div className="field-row">
-                                <label className="checkbox">
-                                    <input type="checkbox" />
-                                    <span>Remember me</span>
-                                </label>
-                                <a href="#" className="link-muted">
-                                    Forgot password?
-                                </a>
-                            </div>
-                            <button
-                                type="submit"
-                                className="btn primary"
-                                onClick={handleLogin}
-                            >
-                                Login
-                            </button>
-                        </form>
-                        <p className="auth-footer">
-                            Don’t have an account?&nbsp;
-                            <Link to="/signup" className="auth-footer">
-                                Sign Up
-                            </Link>
-                        </p>
-                    </section>
-                </div>
+                            <a href="#" className="link-muted">
+                                Forgot password?
+                            </a>
+                        </div>
+                        <button
+                            type="submit"
+                            className="btn primary"
+                        >
+                            Login
+                        </button>
+                    </form>
+                    <p className="auth-footer">
+                        Don’t have an account?&nbsp;
+                        <Link to="/signup" className="link-accent">
+                            Sign Up
+                        </Link>
+                    </p>
+                </section>
             </main>
 
             <footer className="app-footer">

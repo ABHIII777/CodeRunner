@@ -1,0 +1,19 @@
+@import url("./Login.css");
+
+.auth-card {
+  max-width: 520px;
+}
+
+.field-row {
+  flex-wrap: wrap;
+}
+
+.field-row .field {
+  flex: 1 1 0;
+}
+
+@media (max-width: 640px) {
+  .field-row {
+    flex-direction: column;
+  }
+}

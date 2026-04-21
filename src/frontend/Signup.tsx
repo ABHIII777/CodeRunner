@@ -23,21 +23,26 @@ export default function Signup() {
   let handleSignUp = async (e) => {
     e.preventDefault();
 
-    const firstName = formData.firstName;
-    const lastName = formData.lastName;
-    const email = formData.email;
-    const password = formData.password;
+    try {
+      const res = await fetch("http://localhost:3000/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
 
-    const res = await fetch("http://localhost:5173/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ firstName, lastName, email, password })
-    })
-
-    const data = await res.json();
-    console.log(data);
-
-    setIsAuth(true);
+      const data = await res.json();
+      
+      if (res.ok) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        setIsAuth(true);
+      } else {
+        alert(data.message || "Signup failed");
+      }
+    } catch (err) {
+      console.error("Signup error:", err);
+      alert("Connection error to server");
+    }
   }
 
   useEffect(() => {
@@ -47,7 +52,7 @@ export default function Signup() {
   }, [isAuth])
 
   return (
-    <div className="app-shell">
+    <div className="auth-page">
       <header className="app-header">
         <div className="brand">
           <span className="brand-mark"><Link to="/">CR</Link></span>
@@ -63,14 +68,16 @@ export default function Signup() {
         </nav>
       </header>
 
-      <main className="app-main">
+      <main className="auth-main">
         <section className="auth-card">
-          <h1 className="auth-title">Create your account</h1>
-          <p className="auth-subtitle">
-            Start building and running your code in minutes.
-          </p>
+          <div className="auth-header">
+            <h1 className="auth-title">Create your account</h1>
+            <p className="auth-subtitle">
+              Start building and running your code in minutes.
+            </p>
+          </div>
 
-          <form className="auth-form">
+          <form className="auth-form" onSubmit={handleSignUp}>
             <div className="field-row">
               <label className="field">
                 <span className="field-label">First name</span>
@@ -127,7 +134,7 @@ export default function Signup() {
               />
             </label>
 
-            <label className="checkbox">
+            <label className="checkbox-label">
               <input type="checkbox" required />
               <span>
                 I agree to the
@@ -145,7 +152,6 @@ export default function Signup() {
             <button
               type="submit"
               className="btn primary"
-              onClick={handleSignUp}
             >
               Create account
             </button>
@@ -153,7 +159,7 @@ export default function Signup() {
 
           <p className="auth-footer">
             Already have an account?&nbsp;
-            <Link to="/" className="auth-footer">
+            <Link to="/login" className="link-accent">
               Login
             </Link>
           </p>
